@@ -8,9 +8,11 @@
 
 TEST(DatatypeTest, DtypeToString)
 {
-    EXPECT_EQ(dtype_to_string<char>(),      "int8");
-    EXPECT_EQ(dtype_to_string<int>(),       "int32");
-    EXPECT_EQ(dtype_to_string<long>(),      "int64");
+    // EXPECT_EQ(dtype_to_string<char>(), "int8");
+    EXPECT_EQ(dtype_to_string<signed char>(), "int8");
+    EXPECT_EQ(dtype_to_string<unsigned char>(), "uint8");
+    EXPECT_EQ(dtype_to_string<int>(), "int32");
+    // EXPECT_EQ(dtype_to_string<long>(), "int64");
 
     EXPECT_EQ(dtype_to_string<int8_t>(),    "int8");
     EXPECT_EQ(dtype_to_string<int16_t>(),   "int16");
@@ -28,9 +30,11 @@ TEST(DatatypeTest, DtypeToString)
 
 TEST(DatatypeTest, DtypeMatches)
 {
-    EXPECT_TRUE(dtype_matches<char>("int8"));
+    // EXPECT_TRUE(dtype_matches<char>("int8"));
+    EXPECT_TRUE(dtype_matches<signed char>("int8"));
+    EXPECT_TRUE(dtype_matches<unsigned char>("uint8"));
     EXPECT_TRUE(dtype_matches<int>("int32"));
-    EXPECT_TRUE(dtype_matches<long>("int64"));
+    // EXPECT_TRUE(dtype_matches<long>("int64"));
 
     EXPECT_TRUE(dtype_matches<int8_t>("int8"));
     EXPECT_TRUE(dtype_matches<int16_t>("int16"));

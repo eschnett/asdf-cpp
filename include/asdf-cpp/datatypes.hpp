@@ -42,6 +42,6 @@ DECLARE_DTYPE_FUNCTIONS(float,      "float32");
 DECLARE_DTYPE_FUNCTIONS(double,     "float64");
 
 // #ifdef __clang__
-static_assert(CHAR_BIT * sizeof(long) == 64, "Unexpected size for long datatype");
-DECLARE_DTYPE_FUNCTIONS(long,       "int64");
+// static_assert(CHAR_BIT * sizeof(long) == 64, "Unexpected size for long datatype");
+// DECLARE_DTYPE_FUNCTIONS(long,       "int64");
 // #endif

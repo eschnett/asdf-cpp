@@ -2,6 +2,8 @@
 asdf-cpp
 ========
 
+|Build Status| |Coverage Status|
+
 The **A**\ dvanced **S**\ cientific **D**\ ata **F**\ ormat (ASDF) is a
 next-generation interchange format for scientific data. This repository
 contains a prototype library implementation of the `ASDF Standard
@@ -167,3 +169,7 @@ See Also
 * `ASDF for Python <http://asdf.readthedocs.io/en/latest/>`_
 * `yaml-cpp <https://github.com/jbeder/yaml-cpp>`_
 
+.. |Build Status| image:: https://travis-ci.org/eschnett/asdf-cpp.svg?branch=master
+   :target: https://travis-ci.org/eschnett/asdf-cpp
+.. |Coverage Status| image:: https://coveralls.io/repos/github/eschnett/asdf-cpp/badge.svg?branch=master
+   :target: https://coveralls.io/github/eschnett/asdf-cpp?branch=master

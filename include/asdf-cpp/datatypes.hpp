@@ -1,9 +1,9 @@
 #pragma once
 
-#include <string>
-#include <cstdint>
+#include <cassert>
 #include <climits>
-#include <assert.h>
+#include <cstdint>
+#include <string>
 
 
 #define DECLARE_DTYPE_FUNCTIONS(TYPE, STRING)           \
@@ -41,7 +41,7 @@ static_assert(CHAR_BIT * sizeof(double) == 64, "Unexpected size for double datat
 DECLARE_DTYPE_FUNCTIONS(float,      "float32");
 DECLARE_DTYPE_FUNCTIONS(double,     "float64");
 
-#ifdef __clang__
+// #ifdef __clang__
 static_assert(CHAR_BIT * sizeof(long) == 64, "Unexpected size for long datatype");
 DECLARE_DTYPE_FUNCTIONS(long,       "int64");
-#endif
+// #endif

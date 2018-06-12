@@ -1,6 +1,7 @@
-#include <string>
 #include <cstdint>
+#include <cstring>
 #include <stdexcept>
+#include <string>
 
 #include <asdf-cpp/compression.hpp>
 #include <asdf-cpp/private/compression.hpp>

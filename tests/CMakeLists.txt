@@ -6,21 +6,8 @@ add_subdirectory(${GTEST_ROOT})
 include_directories(SYSTEM ${GTEST_ROOT}/googlemock/include)
 include_directories(SYSTEM ${GTEST_ROOT}/googletest/include)
 
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR
-   CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  set(asdf_test_flags "-Wno-variadic-macros -Wno-sign-compare")
-
-  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    set(asdf_test_flags "${asdf_test_flags} -Wno-c99-extensions")
-  endif()
-
-  if(CMAKE_COMPILER_IS_GNUCXX)
-    set(asdf_test_flags "${asdf_test_flags} -std=gnu++11")
-  else()
-    set(asdf_test_flags "${asdf_test_flags} -std=c++11")
-  endif()
-endif()
-
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(GLOB test_headers [a-z_]*.h)
 file(GLOB test_sources [a-z_]*.cpp)

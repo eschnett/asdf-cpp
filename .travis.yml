@@ -38,13 +38,9 @@ install:
       (
         mkdir -p external
         cd external
-        echo GETTING
         wget https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.6.2.tar.gz
-        echo UNPACKING
         tar xzf yaml-cpp-0.6.2.tar.gz
-        echo PATCHING
-        (cd yaml-cpp-yaml-cpp-0.6.2 && ls -l ../../easier-to-inherit.diff && patch -p1 <../../easier-to-inherit.diff)
-        echo BUILDING
+        (cd yaml-cpp-yaml-cpp-0.6.2 && patch -p1 <../../easier-to-inherit.diff)
         mkdir yaml-cpp-0.6.2-build
         cd yaml-cpp-0.6.2-build
         cmake -DCMAKE_CXX_COMPILER="$CXX" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX="$YAML_CPP_DIR" ../yaml-cpp-yaml-cpp-0.6.2
@@ -72,11 +68,6 @@ install:
   - gem install coveralls-lcov
   - which lcov
   - lcov --version
-  - mkdir -p "$HOME/bin"
-  - ln -s "$(which $GCOV)" "$HOME/bin/gcov"
-  - ls -l "$HOME/bin"
-  - export PATH="$HOME/bin:$PATH"
-  - hash -r
 
 script:
   - mkdir build
@@ -88,6 +79,11 @@ script:
   - popd
 
 after_success:
+  - mkdir -p "$HOME/bin"
+  - ln -s "$(which $GCOV)" "$HOME/bin/gcov"
+  - ls -l "$HOME/bin"
+  - export PATH="$HOME/bin:$PATH"
+  - hash -r
   - mkdir build-coveralls && pushd build-coveralls
   - export COVERALLS_SERVICE_NAME=travis-ci
   - export COVERALLS_REPO_TOKEN='u0rrEwxLGB0FeUrfeA4zdqr9hD6lyOyyx'

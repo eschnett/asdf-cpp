@@ -24,19 +24,13 @@ set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # NOTE: This YAML package must include this patch:
 # <https://github.com/jbeder/yaml-cpp/pull/585>.
 find_package(yaml-cpp REQUIRED)
-# set (YAML_CPP_DIR "${install_dir}/src/yaml-cpp-extern")
-# set (YAML_INCLUDE_DIR "${YAML_CPP_DIR}/include")
-# set (YAML_LIBRARIES "${YAML_CPP_DIR}-build/libyaml-cpp.a")
-# add_library(yaml-cpp STATIC IMPORTED)
-# set_property(TARGET yaml-cpp PROPERTY IMPORTED_LOCATION ${YAML_LIBRARIES})
-# add_dependencies( yaml-cpp yaml-cpp-extern-build )
 
 # Look for optional compression packages
-find_package(zlib)
-find_package(bzip2)
+find_package(BZip2)
+find_package(ZLIB)
 
 set( INCLUDE_DIR include )
-include_directories( ${INCLUDE_DIR} ${YAML_INCLUDE_DIR} )
+include_directories( ${INCLUDE_DIR} ${YAML_CPP_INCLUDE_DIR} )
 
 set(asdf_c_flags ${CMAKE_C_FLAGS})
 set(asdf_cxx_flags ${CMAKE_CXX_FLAGS})
@@ -47,7 +41,7 @@ file(GLOB SOURCE_FILES src/[a-z_]*.cpp)
 add_sources(${SOURCE_FILES})
 
 add_library( asdf-cpp ${SOURCE_FILES})
-target_link_libraries( asdf-cpp yaml-cpp )
+target_link_libraries( asdf-cpp ${YAML_CPP_LIBRARIES} )
 
 set_target_properties(asdf-cpp PROPERTIES
   COMPILE_FLAGS "${asdf_c_flags} ${asdf_cxx_flags}"

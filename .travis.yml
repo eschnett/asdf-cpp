@@ -43,11 +43,11 @@ install:
         echo UNPACKING
         tar xzf yaml-cpp-0.6.2.tar.gz
         echo PATCHING
-        (cd yaml-cpp-yaml-cpp-0.6.2 && patch -p1 "../../easier-to-inherit.diff")
+        (cd yaml-cpp-yaml-cpp-0.6.2 && ls -l ../../easier-to-inherit.diff && patch -p1 <../../easier-to-inherit.diff)
         echo BUILDING
         mkdir yaml-cpp-0.6.2-build
         cd yaml-cpp-0.6.2-build
-        cmake -DCMAKE_CXX_COMPILER="$CXX" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX="$YAML_CPP_DIR" "../yaml-cpp-yaml-cpp-0.6.2"
+        cmake -DCMAKE_CXX_COMPILER="$CXX" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX="$YAML_CPP_DIR" ../yaml-cpp-yaml-cpp-0.6.2
         make -j2
         make -j2 install
       )
